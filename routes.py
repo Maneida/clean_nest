@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 main_routes = Blueprint('main_routes', __name__)
 
 
 @main_routes.route('/')
 def index():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 
 @main_routes.route('/about')
 def about():
-    return 'About page'
+    return render_template('a_about.html')
