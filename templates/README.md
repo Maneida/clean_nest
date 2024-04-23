@@ -42,3 +42,58 @@ Share cleaning tips, company news, or other relevant content to engage users.
 
 Additionally, you may want to include pages for special promotions, customer 
 testimonials, and a gallery showcasing before-and-after photos of cleaned spaces.
+
+
+`
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/booking', methods=['GET', 'POST'])
+def booking():
+    if request.method == 'POST':
+        # Process the booking form data
+        return redirect(url_for('confirmation'))
+    return render_template('booking.html')
+
+@app.route('/account', methods=['GET', 'POST'])
+def account():
+    # Logic for creating an account or logging in
+    return render_template('account.html')
+
+@app.route('/dashboard')
+def dashboard():
+    # Logic for displaying user dashboard
+    return render_template('dashboard.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`

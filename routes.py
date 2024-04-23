@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, request, url_for
 
 main_routes = Blueprint('main_routes', __name__)
 
@@ -18,10 +18,17 @@ def show_about():
 def show_services():
     return render_template("services.html")
 
-@main_routes.route("/booking")
-def book_services():
-    return render_template("booking.html")
+@main_routes.route("/booking", methods=['GET', 'POST'])
+def booking():
+    if request.method == 'POST':
+        # Process the booking form data
+        return redirect(url_for('confirmation'))
+    return render_template('booking.html')
 
 @main_routes.route("/auth")
 def get_authentication():
     return render_template("auth.html")
+
+@main_routes.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
